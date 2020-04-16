@@ -1,0 +1,155 @@
+/* フォント指定 */
+body {
+  font-family: "M PLUS Rounded 1c";
+  background: #e1f5fe;
+}
+
+/* タイトル */
+.title {
+  color: white;
+  background: #1565c0;
+}
+
+.title h1 {
+  font-size: 50px;
+  margin: 0;
+  margin-top: 32px;
+}
+.title p {
+  font-size: 25px;
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+/* フッター */
+footer {
+  display: flex;
+  padding: 32px 0;
+  margin: 0 auto;
+  align-self: center;
+  text-align: center;
+  background: #323135;
+  color: #98969c;
+}
+
+/* フッターの画像 */
+footer img {
+  margin-left: auto;
+  margin-right: 5px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+/* フッターのテキスト */
+footer p {
+  margin-right: auto;
+}
+
+/* 地図全体 */
+#target {
+  width: 400px;
+  height: 500px;
+}
+
+/* ラベル全体 */
+.accbox {
+  width: 400px;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+/* スクロールバーの非表示 */
+.accbox::-webkit-scrollbar {
+  display: none;
+}
+
+/*ラベル*/
+.accbox label {
+  display: block;
+  margin: 1.5px 0;
+  padding: 11px 12px;
+  color: #01579b;
+  font-weight: bold;
+  background: #81d4fa;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+/*ラベルホバー時*/
+.accbox label:hover {
+  opacity: 0.8;
+}
+
+/*チェックは隠す*/
+.accbox input {
+  display: none;
+}
+
+/*中身を非表示にしておく*/
+.accbox .accshow {
+  height: 0; /*高さを0に*/
+  padding: 0; /*余白を0に*/
+  overflow: hidden; /*非表示に*/
+  opacity: 0; /*中身を透明に*/
+  transition: 0.8s; /*クリック時の動きを滑らかに*/
+}
+
+/*クリックで中身表示*/
+.cssacc:checked + .accshow {
+  height: auto;
+  padding: 5px;
+  background: #eaeaea;
+  opacity: 1;
+}
+
+/* コード表示 */
+.prettyprint {
+  padding: 10px 0;
+  border-radius: 4px;
+  overflow-x: scroll;
+}
+
+/* コードの番号表示 */
+.prettyprint ol.linenums > li {
+  list-style-type: decimal;
+}
+
+/* ボタン */
+button {
+  background: #f59a00;
+  color: #fff;
+  width: 140px;
+  line-height: 44px;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 40px;
+}
+
+/* ボタンホバー時 */
+button:hover {
+  opacity: 0.9;
+}
+
+/* ウィンドウズ幅が900px以上の場合 */
+@media (min-width: 900px) {
+  /* 地図のtd */
+  .map {
+    width: 60%;
+  }
+  /* 地図全体 */
+  #target {
+    width: 100%;
+  }
+
+  /* サイドのtd */
+  .side {
+    width: 40%;
+  }
+
+  /* サイドバー全体 */
+  .accbox {
+    width: 100%;
+  }
+}
