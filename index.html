@@ -8,7 +8,8 @@
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="/css/prettify.css">
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
 </head>
 
@@ -18,8 +19,8 @@
     <!-- タイトル-->
     <tr class="title">
       <th colspan="2">
-        <h1>Google Map API</h1>
-        <p>= JavaScriptによる仕様把握 =</p>
+        <h1>Google Map APIを使ってみた</h1>
+        <p>= JavaScriptによるオプション変更 =</p>
       </th>
     </tr>
 
@@ -38,102 +39,115 @@
         <!-- ラベル全体 -->
         <div class="accbox">
           <!--ラベル0-->
-          <label for="label0">Google Mapの表示(デフォルト状態)</label>
           <input type="checkbox" id="label0" class="cssacc" />
+          <label for="label0">マップの描画(デフォルト状態)</label>
           <div class="accshow">
             <!--ここに隠す中身-->
-            <span>デフオルト</span>
+            <div><strong>center</strong> : 今回は東京駅にします。</div>
+            <div><strong>zoom</strong> : 倍率を変えれます。</div>
             <pre class="prettyprint linenums">
-                function initMap() {
-                  'use strict';
-                  var target = document.getElementById("target");
-                  var map;
-                  var tokyo = { lat: 35.681167, lng: 139.767052 }; //緯度経度の指定
-                  map = new google.maps.Map(target, {
-                    center: tokyo, //中央
-                    zoom: 15, //倍率
-                  });
-                };
-              </pre>
+function initMap() {
+  'use strict';
+  var target = document.getElementById("target");
+  var map;
+  var tokyo = { lat: 35.681167, lng: 139.767052 }; //緯度経度の指定
+  map = new google.maps.Map(target, {
+    center: tokyo, //中央
+    zoom: 15, //倍率
+  });
+};
+            </pre>
             <button onclick="initMap()">実行</button>
           </div>
           <!--//ラベル0-->
           <!--ラベル1-->
-          <label for="label1">UIを非表示にする</label>
           <input type="checkbox" id="label1" class="cssacc" />
+          <label for="label1">UIを非表示にする</label>
           <div class="accshow">
             <!--ここに隠す中身-->
-            <span>JavaScriptで変更</span>
+            <div><strong>disableDefaultUI</strong> : UI(地図にあるズームや全画面表示など)を無効化するためのオプション</div>
+            <hr>
+            <div>disableDefaultUI:true ⇒ 全部消える</div>
             <pre class="prettyprint linenums:6">
-              map = new google.maps.Map(target, {
-                center: tokyo,
-                zoom: 15,
-                disableDefaultUI: true //UIの非表示
-              });
+map = new google.maps.Map(target, {
+  center: tokyo,
+  zoom: 15,
+  disableDefaultUI: true //UIの非表示
+});
             </pre>
             <button onclick="clickBtn1()">実行</button>
           </div>
           <!--//ラベル1-->
           <!--ラベル2-->
-          <label for="label2">衛星写真に切り替える</label>
           <input type="checkbox" id="label2" class="cssacc" />
+          <label for="label2">衛星写真に切り替える</label>
           <div class="accshow">
             <!--ここに隠す中身-->
-            <span>衛星写真にする</span>
+            <div><strong>mapTypeId</strong> : 地図の種類をオプションで指定する</div>
+            <hr>
+            <div>mapTypeId: 'satellite' ⇒ 衛星写真</div>
             <pre class="prettyprint linenums:6">
-                map = new google.maps.Map(target, {
-                  center: tokyo,
-                  zoom: 15,
-                  mapTypeId: 'satellite' //衛星写真にする
-                });
-              </pre>
+map = new google.maps.Map(target, {
+  center: tokyo,
+  zoom: 15,
+  mapTypeId: 'satellite' //衛星写真にする
+});
+            </pre>
             <button onclick="clickBtn2()">実行</button>
           </div>
           <!--//ラベル2-->
           <!--ラベル3-->
-          <label for="label3">衛星写真+道路情報に切り替える</label>
           <input type="checkbox" id="label3" class="cssacc" />
+          <label for="label3">衛星写真+道路情報に切り替える</label>
           <div class="accshow">
             <!--ここに隠す中身-->
-            <span>衛星写真+道路情報にする</span>
+            <div><strong>mapTypeId</strong> : 地図の種類をオプションで指定する</div>
+            <hr>
+            <div>mapTypeId: 'hybrid' ⇒ 衛星写真+道路情報</div>
             <pre class="prettyprint linenums:6">
-              map = new google.maps.Map(target, {
-                center: tokyo,
-                zoom: 15,
-                mapTypeId: 'hybrid' //衛星写真+道路情報にする
-              });
+map = new google.maps.Map(target, {
+  center: tokyo,
+  zoom: 15,
+  mapTypeId: 'hybrid' //衛星写真+道路情報にする
+});
             </pre>
             <button onclick="clickBtn3()">実行</button>
           </div>
           <!--//ラベル3-->
           <!--ラベル4-->
-          <label for="label4">クリックイベントを無効にする</label>
           <input type="checkbox" id="label4" class="cssacc" />
+          <label for="label4">アイコンクリックを無効にする</label>
           <div class="accshow">
             <!--ここに隠す中身-->
-            <span>クリックイベント無効</span>
+            <div><strong>clickableIcons</strong> : 施設のアイコンをクリックすると、表示される</div>
+            <hr>
+            <div>clickableIcons: false ⇒ アイコンクリックを無効</div>
             <pre class="prettyprint linenums:6">
-              map = new google.maps.Map(target, {
-                center: tokyo,
-                zoom: 15,
-                clickableIcons: false //クリックイベント無効
-              });
+map = new google.maps.Map(target, {
+  center: tokyo,
+  zoom: 15,
+  clickableIcons: false //クリックイベント無効
+});
             </pre>
             <button onclick="clickBtn4()">実行</button>
           </div>
           <!--//ラベル4-->
           <!--ラベル5-->
-          <label for="label5">クリックした緯度経度が分かり、移動する</label>
           <input type="checkbox" id="label5" class="cssacc" />
+          <label for="label5">クリックした緯度経度が分かり、移動する</label>
           <div class="accshow">
             <!--ここに隠す中身-->
-            <span>地図上でクリックされた箇所の緯度経度、移動させる</span>
+            <div><strong>e.latLng.lat()</strong> : クリックした緯度</div>
+            <div><strong>e.latLng.lng()</strong> : クリックした経度</div>
+            <div><strong>setCenter(e.latLng)</strong> : centerの更新(中心を動かす)</div>
+            <div><strong>panTo(e.latLng)</strong> : ゆっくり動かす</div>
+            <hr>
             <pre class="prettyprint linenums:10">
-              map.addListener('click', function (e) {
-                document.getElementById("latitude").innerHTML = "緯度：" + e.latLng.lat();
-                document.getElementById("longitude").innerHTML = "経度：" + e.latLng.lng();
-                this.panTo(e.latLng); //移動する
-              });
+map.addListener('click', function (e) {
+  document.getElementById("latitude").innerHTML = "緯度：" + e.latLng.lat();
+  document.getElementById("longitude").innerHTML = "経度：" + e.latLng.lng();
+  this.panTo(e.latLng); //移動する
+});
             </pre>
             <div id="latitude">緯度：</div>
             <div id="longitude">経度：</div>
@@ -141,24 +155,27 @@
           </div>
           <!--//ラベル5-->
           <!--ラベル6-->
-          <label for="label6">クリックしたらマーカーがつく</label>
           <input type="checkbox" id="label6" class="cssacc" />
+          <label for="label6">クリックしたらマーカーがつく</label>
           <div class="accshow">
             <!--ここに隠す中身-->
-            <span>クリックしたらマーカーがつくよ</span>
+            <div><strong>animation</strong> : アニメーション効果を付ける</div>
+            <hr>
+            <div>animation: google.maps.Animation.BOUNCE ⇒ バウンドするような動き</div>
+            <div>animation: google.maps.Animation.DROP ⇒ ストンと落ちるような動き</div>
             <pre class="prettyprint linenums:6">
-              map.addListener('click', function (e) {
-                var marker = new google.maps.Marker({
-                  position: e.latLng, //クリック時の場所
-                  map: map, //マップ(左辺)の選択はすでにあるマップ(右辺)にする
-                  title: "もう一度押すと消えるよ", //ホバー時に表示
-                  animation: google.maps.Animation.DROP //マーカーの動き
-                });
-                //マーカーを再度クリック時に消える
-                marker.addListener('click', function () {
-                  this.setMap(null);
-                });
-              });
+map.addListener('click', function (e) {
+  var marker = new google.maps.Marker({
+    position: e.latLng, //クリック時の場所
+    map: map, //マップ(左辺)の選択はすでにあるマップ(右辺)にする
+    title: "もう一度押すと消えるよ", //ホバー時に表示
+    animation: google.maps.Animation.DROP //マーカーの動き
+  });
+  //マーカーを再度クリック時に消える
+  marker.addListener('click', function () {
+    this.setMap(null);
+  });
+});
             </pre>
             <button onclick="clickBtn6()">実行</button>
           </div>
@@ -283,8 +300,8 @@
           this.setMap(null);
         });
       });
+    };
 
-    }
   </script>
 
   <script src="js/prettify.js"></script>

@@ -1,6 +1,7 @@
 /* フォント指定 */
 body {
   font-family: "M PLUS Rounded 1c";
+  font-weight: bold;
   background: #e1f5fe;
 }
 
@@ -35,14 +36,17 @@ footer {
 /* フッターの画像 */
 footer img {
   margin-left: auto;
-  margin-right: 5px;
-  width: 60px;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 
 /* フッターのテキスト */
 footer p {
-  margin-right: auto;
+  margin: 0 auto 0 0;
+  padding-top: 5px;
+  text-align: center;
 }
 
 /* 地図全体 */
@@ -77,6 +81,11 @@ footer p {
   transition: all 0.5s;
 }
 
+/* strongの文字 */
+.accbox strong {
+  color: red;
+}
+
 /*ラベルホバー時*/
 .accbox label:hover {
   opacity: 0.8;
@@ -97,7 +106,7 @@ footer p {
 }
 
 /*クリックで中身表示*/
-.cssacc:checked + .accshow {
+.cssacc:checked + label + .accshow {
   height: auto;
   padding: 5px;
   background: #eaeaea;
@@ -132,6 +141,18 @@ button:hover {
   opacity: 0.9;
 }
 
+/* アイコン表示 */
+.accbox label::before {
+  content: "\f054";
+  font-family: "Font Awesome 5 Free";
+  padding-right: 8px;
+}
+
+/*アイコンを入れ替える*/
+.cssacc:checked + label:before {
+  content: "\f078";
+}
+
 /* ウィンドウズ幅が900px以上の場合 */
 @media (min-width: 900px) {
   /* 地図のtd */
@@ -141,11 +162,6 @@ button:hover {
   /* 地図全体 */
   #target {
     width: 100%;
-  }
-
-  /* サイドのtd */
-  .side {
-    width: 40%;
   }
 
   /* サイドバー全体 */
